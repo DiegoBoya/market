@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @Table(name = "compras")
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 public class Compra {
 
@@ -43,5 +42,17 @@ public class Compra {
         this.medioPago = medioPago;
         this.comentario = comentario;
         this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Compra{" +
+                "idCompra=" + idCompra +
+                ", idCliente='" + idCliente + '\'' +
+                ", fecha=" + fecha +
+                ", medioPago='" + medioPago + '\'' +
+                ", comentario='" + comentario + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
     }
 }

@@ -12,7 +12,6 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
 public class Producto {
 
     @Id
@@ -45,5 +44,18 @@ public class Producto {
         this.precioVenta = precioVenta;
         this.cantidadStock = cantidadStock;
         this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "idProducto=" + idProducto +
+                ", nombre='" + nombre + '\'' +
+                ", idCategoria=" + idCategoria +
+                ", codigoBarras='" + codigoBarras + '\'' +
+                ", precioVenta=" + precioVenta +
+                ", cantidadStock=" + cantidadStock +
+                ", estado=" + estado +
+                '}';
     }
 }

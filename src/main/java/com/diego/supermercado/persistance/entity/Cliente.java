@@ -15,7 +15,6 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
 public class Cliente {
 
     @Id
@@ -42,5 +41,17 @@ public class Cliente {
         this.celular = celular;
         this.direccion = direccion;
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "idCliente='" + idCliente + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", celular=" + celular +
+                ", direccion='" + direccion + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

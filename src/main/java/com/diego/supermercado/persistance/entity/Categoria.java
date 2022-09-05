@@ -12,7 +12,6 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
 public class Categoria {
 
     @Id
@@ -27,5 +26,14 @@ public class Categoria {
     public Categoria ( String descripcion, Boolean estado){
         this.descripcion = descripcion;
         this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Categoria{" +
+                "idCategoria=" + idCategoria +
+                ", descripcion='" + descripcion + '\'' +
+                ", estado=" + estado +
+                '}';
     }
 }
