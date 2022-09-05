@@ -20,15 +20,16 @@ public class Producto {
     @Column(name="id_producto")
     private Integer idProducto;
 
+    @Column(name = "nombre", length = 45)
     private String nombre;
 
     @Column(name="id_categoria")
     private Integer idCategoria;
 
-    @Column(name="codigo_barras")
+    @Column(name="codigo_barras", length = 150)
     private String codigoBarras;
 
-    @Column(name="precio_venta")
+    @Column(name="precio_venta", length = 16)
     private Double precioVenta;
 
     @Column(name="cantidad_stock")
