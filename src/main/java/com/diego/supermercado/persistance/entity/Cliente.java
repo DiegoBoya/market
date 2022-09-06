@@ -5,10 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "clientes")
@@ -42,6 +40,9 @@ public class Cliente {
         this.direccion = direccion;
         this.email = email;
     }
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Compra> compras;
 
     @Override
     public String toString() {

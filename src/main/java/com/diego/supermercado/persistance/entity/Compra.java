@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Entity
@@ -34,6 +35,13 @@ public class Compra {
 
     @Column(length = 1)
     private String estado;
+
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
+    private Cliente cliente;
+
+    @OneToMany(mappedBy = "compra")
+    private List<ComprasProducto> productos;
 
     //Constructor con todos los parametros menos con el id_compra
     public Compra(String idCliente, LocalDateTime fecha, String medioPago, String comentario, String estado) {
