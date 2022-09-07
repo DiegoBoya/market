@@ -17,6 +17,6 @@ public interface ProductoCrudRepository  extends CrudRepository<Producto, Intege
      *  operador = les than
      *  atrobuto extra = estado
      */
-    Optional<List<Producto>> findBtCantidadStockLessThanAndEstado(Integer cantidadStock, Boolean estado);
+    Optional<List<Producto>> findByCantidadStockLessThanAndEstado(Integer cantidadStock, Boolean estado);
 
 }

@@ -21,7 +21,7 @@ public class ProductoRepository {
     }
 
     public Optional<List<Producto>> getMasVendidos(Integer cant, Boolean estado){
-        return productoCrudRepository.findBtCantidadStockLessThanAndEstado(cant, estado);
+        return productoCrudRepository.findByCantidadStockLessThanAndEstado(cant, estado);
     }
 
     public Optional<Producto> getProducto(Integer idProducto){
