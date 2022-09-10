@@ -30,16 +30,16 @@ public class ProductoRepository implements ProductRepository {
         return Optional.of(productMapper.toProducts(productos));
     }
 
+    /**
+     * @param quantity = cantidad minima de producto disponible en el stock
+     * @return = Lista de los productos mas vendidos o de los que menos hay
+     */
     @Override
     public Optional<List<Product>> getScarseProducts(int quantity) {
         //recupera los productos (entity) de la BD, y los mete en una lista
         Optional<List<Producto>> productos = productoCrudRepository.findByCantidadStockLessThanAndEstado(quantity, true);
         //convierte los Producto en Products
         return productos.map(producto -> productMapper.toProducts(producto));
-    }
-
-    public Optional<List<Producto>> getMasVendidos(Integer cant, Boolean estado){
-        return productoCrudRepository.findByCantidadStockLessThanAndEstado(cant, estado);
     }
 
     @Override
