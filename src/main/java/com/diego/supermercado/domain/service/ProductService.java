@@ -17,7 +17,7 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepositoryImpl;
 
-    public List<Product> getAll(){
+    public List<Product> getAll() {
         return productRepositoryImpl.getAll();
     }
 
@@ -42,11 +42,10 @@ public class ProductService {
     }
 
     /**
-     *
      * @param productId = product to update
-     * @param product = New values to save for the selected product
+     * @param product   = New values to save for the selected product
      */
-    public void update (int productId , Product product){
+    public boolean update(int productId, Product product) {
         //recupera el product a modificar
         Product prod = getProduct(productId).get();
         // todo: hacerlo con funcional con el map()
@@ -58,8 +57,10 @@ public class ProductService {
             prod.setStock(product.getStock());
             this.save(prod);
             logger.info("se modifico el Producto con exito.");
+            return true;
         } else {
             logger.info("no se encuentra el producto con el id: " + productId);
+            return false;
         }
 
     }
