@@ -32,9 +32,17 @@ public class ProductController {
 
     @GetMapping("/category/{id}")
     public ResponseEntity<List<Product>> getProductByCategory(@PathVariable("id") int categoryId) {
-        return productService.getByCategory(categoryId)
-                .map(products -> new ResponseEntity<>(products, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+       // return productService.getByCategory(categoryId)
+       //         .map(products -> new ResponseEntity<>(products, HttpStatus.OK))
+       //         .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+
+        Optional<List<Product>> products = productService.getByCategory(categoryId);
+
+        if (products.isPresent() && !products.get().isEmpty())
+            return new ResponseEntity<>(products.get(), HttpStatus.OK);
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
     }
 
     @PostMapping("/save")
