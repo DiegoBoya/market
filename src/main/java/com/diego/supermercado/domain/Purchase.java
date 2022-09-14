@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 public class Purchase {
     private int purchaseId;
-    private int clientId;
+    private String clientId;
     private LocalDateTime date;
     private String paymentMethod;
     private String comment;

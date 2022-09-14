@@ -25,7 +25,7 @@ public class Cliente {
     @Column(name="apellidos", length = 100)
     private String apellido;
 
-    private Integer celular;
+    private Long celular;
 
     @Column(name="direccion", length = 80)
     private String direccion;
@@ -33,7 +33,7 @@ public class Cliente {
     @Column(name="correo_electronico", length = 70)
     private String email;
 
-    public Cliente(String nombre, String apellido, Integer celular, String direccion, String email) {
+    public Cliente(String nombre, String apellido, Long celular, String direccion, String email) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.celular = celular;
