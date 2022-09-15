@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 public class Purchase {
-    private int purchaseId;
+    private Integer purchaseId;
     private String clientId;
     private LocalDateTime date;
     private String paymentMethod;

@@ -55,8 +55,8 @@ public class PurchaseController {
         ResponseEntity<Purchase> response = null;
 
         try{
-            purchaseServiceImpl.save(purchase);
-            response = new ResponseEntity<>(purchase, HttpStatus.CREATED);
+            Purchase p = purchaseServiceImpl.save(purchase);
+            response = new ResponseEntity<>(p, HttpStatus.CREATED);
         }catch(Exception e){
             response = new ResponseEntity<>(HttpStatus.CONFLICT);
             logger.info("error al intentar guardar la Compra");
