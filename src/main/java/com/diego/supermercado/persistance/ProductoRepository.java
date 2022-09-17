@@ -1,6 +1,6 @@
 package com.diego.supermercado.persistance;
 
-import com.diego.supermercado.domain.Product;
+import com.diego.supermercado.domain.dto.Product;
 import com.diego.supermercado.domain.repository.ProductRepository;
 import com.diego.supermercado.persistance.crud.ProductoCrudRepository;
 import com.diego.supermercado.persistance.entity.Producto;

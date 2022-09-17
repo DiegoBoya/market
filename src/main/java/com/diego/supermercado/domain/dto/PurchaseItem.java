@@ -1,4 +1,4 @@
-package com.diego.supermercado.domain;
+package com.diego.supermercado.domain.dto;
 
 import lombok.Getter;
 import lombok.Setter;

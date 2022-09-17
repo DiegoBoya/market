@@ -1,6 +1,6 @@
 package com.diego.supermercado.persistance.mapper;
 
-import com.diego.supermercado.domain.PurchaseItem;
+import com.diego.supermercado.domain.dto.PurchaseItem;
 import com.diego.supermercado.persistance.entity.ComprasProducto;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;

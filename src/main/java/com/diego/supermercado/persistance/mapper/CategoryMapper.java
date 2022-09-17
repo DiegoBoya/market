@@ -1,6 +1,6 @@
 package com.diego.supermercado.persistance.mapper;
 
-import com.diego.supermercado.domain.Category;
+import com.diego.supermercado.domain.dto.Category;
 import com.diego.supermercado.persistance.entity.Categoria;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;

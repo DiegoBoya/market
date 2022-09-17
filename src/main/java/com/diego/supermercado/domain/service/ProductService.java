@@ -1,8 +1,7 @@
 package com.diego.supermercado.domain.service;
 
-import com.diego.supermercado.domain.Product;
+import com.diego.supermercado.domain.dto.Product;
 import com.diego.supermercado.domain.repository.ProductRepository;
-import com.diego.supermercado.persistance.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

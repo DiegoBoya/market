@@ -1,6 +1,6 @@
 package com.diego.supermercado.domain.repository;
 
-import com.diego.supermercado.domain.Product;
+import com.diego.supermercado.domain.dto.Product;
 
 import java.util.List;
 import java.util.Optional;

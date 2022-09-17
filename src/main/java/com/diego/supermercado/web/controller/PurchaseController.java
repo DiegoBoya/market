@@ -1,8 +1,8 @@
 package com.diego.supermercado.web.controller;
 
-import com.diego.supermercado.domain.Purchase;
+import com.diego.supermercado.domain.dto.Purchase;
 import com.diego.supermercado.domain.service.PurchaseService;
-import org.apache.coyote.Response;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,8 @@ public class PurchaseController {
     @Autowired
     private PurchaseService purchaseServiceImpl;
 
-    @RequestMapping("/all")
+    @GetMapping("/all")
+    @ApiOperation("Get all market purchases")
     public ResponseEntity<List<Purchase>> getAllPurchases(){
 
         try{
@@ -32,7 +33,8 @@ public class PurchaseController {
         }
     }
 
-    @RequestMapping("/client/{clientId}")
+    @GetMapping("/client/{clientId}")
+    @ApiOperation("Get all market purchases for the specified Client")
     public ResponseEntity<List<Purchase>> getClientPurchases(@PathVariable String clientId){
         //todo: si el cliente no existe tira el 204... deberia validarse
         try{
@@ -50,6 +52,7 @@ public class PurchaseController {
     }
 
     @PostMapping("/save")
+    @ApiOperation("Save a new purchase in the database")
     public ResponseEntity<Purchase> savePurchase(@RequestBody Purchase purchase){
 
         ResponseEntity<Purchase> response = null;
