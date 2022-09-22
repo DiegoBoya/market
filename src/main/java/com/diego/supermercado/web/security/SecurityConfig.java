@@ -2,6 +2,8 @@ package com.diego.supermercado.web.security;
 
 import com.diego.supermercado.domain.service.MarketUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -31,12 +33,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/webjars/**");
     }*/
 
-    //mantener acceso a swagger sin autorizacion opcion 2
+    //mantener acceso a los endpoint que cumplan con los patrones detallados en el .antMatchers()
     @Override
     protected void configure(HttpSecurity http)throws Exception {
         http.authorizeRequests()
-                .antMatchers("/swagger*").permitAll();
+                .antMatchers("/swagger*",
+                        "**/authenticate")
+                .permitAll().anyRequest().authenticated();
     }
 
+    //TODO: ver min 8
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean()throws Exception{
+        return super.authenticationManagerBean();
+    }
 
 }
