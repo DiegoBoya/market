@@ -10,7 +10,7 @@ import java.util.Date;
 @Component
 public class JWTUtil {
 
-    private static final String KEY = "MARKET_DE_BARRIO";
+    private static final String KEY = " {noop}MARKET";
 
     public String generateToken(UserDetails userDetails){
         return Jwts.builder().setSubject(userDetails.getUsername())

@@ -36,10 +36,37 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //mantener acceso a los endpoint que cumplan con los patrones detallados en el .antMatchers()
     @Override
     protected void configure(HttpSecurity http)throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/swagger*",
-                        "**/authenticate")
-                .permitAll().anyRequest().authenticated();
+    //    http.authorizeRequests()
+    //            .antMatchers("/swagger*",
+    //                    "**/authenticate")
+    //            .permitAll().anyRequest().authenticated();
+
+        http.csrf().disable().authorizeRequests()
+                .antMatchers("/**/authenticate")
+                .permitAll()
+                .anyRequest().authenticated();
+
+
+    }
+
+    /**
+     * Override this method to configure {@link WebSecurity}. For example, if you wish to
+     * ignore certain requests.
+     * <p>
+     * Endpoints specified in this method will be ignored by Spring Security, meaning it
+     * will not protect them from CSRF, XSS, Clickjacking, and so on.
+     * <p>
+     * Instead, if you want to protect endpoints against common vulnerabilities, then see
+     * {@link #configure(HttpSecurity)} and the {@link HttpSecurity#authorizeRequests}
+     * configuration method.
+     *
+     * @param web
+     */
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/v2/api-docs", "/configuration/ui",
+                "/swagger-resources/**", "/configuration/security",
+                "/swagger-ui.html", "/webjars/**");
     }
 
     //TODO: ver min 8
@@ -49,4 +76,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
+    
 }
