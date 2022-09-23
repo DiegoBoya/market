@@ -35,14 +35,17 @@ public class AuthController {
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> createToken(@RequestBody AuthenticationRequest request){
 
+        logger.info("iniciando el login");
+
         try{
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
             UserDetails userDetails = marketUserDetailsService.loadUserByUsername(request.getUsername());
             String jwt = jwtUtil.generateToken(userDetails);
-
+            logger.info(jwt);
             return new ResponseEntity<>(new AuthenticationResponse(jwt), HttpStatus.OK);
         }catch(BadCredentialsException e){
            // logger.info(e.getStackTrace().toString());
+            logger.info("bad credentials");
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
     }
