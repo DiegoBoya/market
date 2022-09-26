@@ -2,7 +2,6 @@ package com.diego.supermercado.web.security.filter;
 
 import com.diego.supermercado.domain.service.MarketUserDetailsService;
 import com.diego.supermercado.web.security.JWTUtil;
-import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
