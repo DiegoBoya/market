@@ -1,6 +1,7 @@
 package com.diego.supermercado.web.security;
 
 import com.diego.supermercado.domain.service.MarketUserDetailsService;
+import com.diego.supermercado.web.security.filter.JWTFilterRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,12 +10,17 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //todo: cambio de WebSecurityCOnfigurerAdapter por BiCrypt - vid 34
     @Autowired
     private MarketUserDetailsService marketUserDetailsService;
+
+    @Autowired
+    private JWTFilterRequest jwtFilterRequest;
 
 
     @Override
@@ -36,15 +42,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //mantener acceso a los endpoint que cumplan con los patrones detallados en el .antMatchers()
     @Override
     protected void configure(HttpSecurity http)throws Exception {
-    //    http.authorizeRequests()
-    //            .antMatchers("/swagger*",
-    //                    "**/authenticate")
-    //            .permitAll().anyRequest().authenticated();
 
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/**/authenticate")
                 .permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated().and().sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+        http.addFilterBefore(jwtFilterRequest, UsernamePasswordAuthenticationFilter.class);
 
 
     }
@@ -69,7 +74,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/swagger-ui.html", "/webjars/**");
     }
 
-    //TODO: ver min 8
+//Spring controla la gestion de la autenticacion
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean()throws Exception{
